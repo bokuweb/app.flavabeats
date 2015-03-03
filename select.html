@@ -1,0 +1,7 @@
+<div ng-controller="MainCtrl">
+    <span ng-click="changeSort()">sort</span>
+    <input type="search" placeholder="Search" ng-model="search">
+    <ul ng-repeat="m in music | filter:search | orderBy:'level':desc">
+        <li><a ng-href="#/{{m.title}}">{{m.title}} {{m.level}}</a></li>
+    </ul>
+</div>
