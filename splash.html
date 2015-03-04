@@ -1,8 +1,13 @@
 <section class="hero" id="hero">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 text-center inner">
+        <div class="row" ng-controller="splashCtrl">
+            <div class="col-md-8 col-md-offset-2 text-center inner" ng-hide="isMobile">
                 <a ng-href="#/select"><h1><img src="img/logo.png" alt="無料音ゲー flavabeats"></h1></a>
+            </div>
+
+            <div class="col-md-8 col-md-offset-2 text-center inner" ng-show="isMobile">
+                <h1><img src="img/logo.png" alt="無料音ゲー flavabeats"></h1>
+                <span class="mobile-message">Sorry, This site is designed specifically for PCs.</span>
             </div>
         </div>
         <div class="top-copylight">

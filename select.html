@@ -5,12 +5,23 @@
                 <div class="col-md-4"><h1 id="logo"><img src="img/logo.png" alt="無料音ゲー flavabeats"></h1></div>
             </div>
             <div class="row search">
-                <div class="col-md-2">
-                    <input class="form-control"type="search" placeholder="Search" ng-model="search"><span ng-click="changeSort()">sort</span>
+                <div class="col-md-3">
+                    <input class="form-control"type="search" placeholder="Search" ng-model="search">
                 </div>
+                <div class="col-md-2 sort"><span ng-click="changeSort()"><i class="fa fa-sort"></i>Level Sort</span></div>
             </div>
             <div class="row">
-                <div class="col-md-3 item" ng-repeat="m in music | filter:search | orderBy:'level':desc"><a ng-href="#/{{m.title}}">{{m.title}} {{m.level}}</a></div>
+                <div class="col-md-3 item" ng-repeat="m in music | filter:search | orderBy:'level':desc">
+                    <a ng-href="#/{{m.title}}">
+                        <img ng-src="{{m.img}}" class="music-image">
+                        <div class="music-description">
+                            <span class="title"><i class="fa fa-headphones"></i>{{m.title}}</span><br>
+                            <span class="author">{{m.by}}</span><br>
+                            <span class="select-license">{{m.license}}</span><br>
+                            <span class="level" ng-bind-html="m.levelIcon"></span>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="copyright">Copyright © 2014 flavabeats All Rights Reserved.</div>
