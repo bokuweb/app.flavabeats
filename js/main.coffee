@@ -44,7 +44,7 @@ class window.Game
       info = new Entity()
       info._element = document.createElement('div')
       infoHtml = '<div id="info"><img src="' + music.img + '" class="music-image">
-                    <div class="music-description"><span><i class="fa fa-headphones"></i>' + music.title + '</span><br>
+                    <div class="music-description"><span class="title"><i class="fa fa-headphones"></i>' + music.title + '</span><br>
                       <span class="author">' + music.by + '</span><br>
                       <span class="license">' + music.license + '</span><br>
                       <span class="level">Level</span>'

@@ -10,99 +10,13 @@
         <script src="js/angular-route.min.js"></script>
         <script src="js/angular-animate.min.js"></script>
         <script src="js/angular-app.js"></script>
-
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
-        <style>
-         body {
-             margin: 0;
-             padding: 0;
-             background: url(img/shattered.png);
-             text-shadow: -1px 1px 0 rgba(255,255,255,0.8);
-             color:#222;
-         }
-
-         #main {
-             width:1080px;
-             margin:0 auto;
-         }
-
-         #enchant-stage {
-             margin:0 auto;
-         }
-
-         img.music-image {
-             width:140px;
-             height:auto;
-             border-radius: 5px;
-         }
-
-         div#info {
-             position: relative;
-         }
-
-         div.music-description {
-             position:absolute;
-             top:0;
-             left:160px;
-             font-family: sans-serif;
-         }
-
-         div.copyright {
-             margin: 50px auto 50px;
-             font-size: 11px;
-             width:300px;
-             color:#333;
-         }
-
-         i {
-             margin: 0 10px 0 0;
-         }
-
-         span.level {
-             margin : 0 5px 0 0 ;
-         }
-
-         i.level {
-             margin: 0 0 0 2px;
-         }
-         li {
-             background:#ccc;
-             width:80px;
-             height:80px;
-             float:left;
-             list-style:none;
-             margin: 5px;
-         }
-         .ng-enter,
-         .ng-leave,
-         .ng-move {
-             -webkit-transition: opacity 0.15s linear;
-             transition: opacity 0.2s linear;
-         }
-         .ng-enter {
-             opacity: 0;
-         }
-         .ng-enter.ng-enter-active {
-             opacity: 1;
-         }
-         .ng-leave {
-             opacity: 1;
-         }
-         .ng-leave.ng-leave-active {
-             opacity: 0;
-         }
-         .ng-move {
-             opacity: .5;
-         }
-         .ng-move.ng-move-active {
-             opacity: 1;
-         }
-        </style>
+        <link href="css/style.css" rel="stylesheet">        
     </head>
     <body>
-        <div ng-view>
-
-        </div>
+        <div ng-view></div>
         <script type="text/javascript" src="js/enchant.js"></script>
         <script type="text/javascript" src="js/score.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
