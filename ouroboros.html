@@ -1,5 +1,13 @@
-    <div id="main">
-      <div id="enchant-stage"></div>
-      <div class="copyright">Copyright © 2014 flavabeats All Rights Reserved.</div>
+<div id="main">
+    <div id="info" ng-controller="GameInfoCtrl">
+        <img ng-src="{{music.img}}" class="music-image">
+        <div class="music-description">
+            <span class="title"><i class="fa fa-headphones"></i>{{music.title}}</span><br>
+            <span class="author">{{music.by}}</span><br>
+            <span class="select-license">{{music.license}}</span><br>
+            <span class="level" ng-bind-html="music.levelIcon"></span>
+        </div>
     </div>
-
+    <div id="enchant-stage"></div>
+    <div class="copyright">Copyright © 2014 flavabeats All Rights Reserved.</div>
+</div>

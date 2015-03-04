@@ -33,7 +33,7 @@ class @Game
     _note.group = new Group()
     _note.index = 0
 
-  load : (music)->
+  play : (music)->
     console.log music.src
     _game.preload(music.src, music.img)
     _endTime = music.endTime
@@ -43,9 +43,7 @@ class @Game
     _game.start()
 
     _game.onload = ->
-
       _music = _game.assets[music.src]
-
       for i in [0...5]
         noteShadow = new Sprite(_noteWidth, _noteHeight)
         noteShadow.y = -_noteHeight + _fallDist  
@@ -54,25 +52,7 @@ class @Game
         noteShadow.image = _game.assets["img/chara1_shadow.png"]
         _game.rootScene.addChild(noteShadow)
 
-
       _renderLogo()
-      console.log "logo"    
-      info = new Entity()
-      info._element = document.createElement('div')
-      infoHtml = '<div id="info"><img src="' + music.img + '" class="music-image">
-                    <div class="music-description"><span class="title"><i class="fa fa-headphones"></i>' + music.title + '</span><br>
-                      <span class="author">' + music.by + '</span><br>
-                      <span class="license">' + music.license + '</span><br>
-                      <span class="level">Level</span>'
-      for i in [0..9]
-        if i < music.level 
-          infoHtml += '<i class="fa fa-star-o level"></i>'
-      infoHtml += '</p></div>'
-
-      info._element.innerHTML = infoHtml
-      info.width = 560
-      info.x = 20
-      info.y = 160
 
       _score.board = new Score(
         game : _game
@@ -86,7 +66,6 @@ class @Game
       _score.board.generate()
       _score.board.update(0)
 
-      _game.rootScene.addChild(info) 
       _game.rootScene.addChild(_note.group)
 
       # create and pool note sprite
@@ -225,8 +204,6 @@ class @Game
           when 88 then code = 2 # X
           when 68 then code = 3 # D
           when 67 then code = 4 # C
-          when 70 then code = 5 # F
-          when 86 then code = 6 # V
           else code = null
         if value.key is code
           if -1 < value.timing - music.currentTime < 1

@@ -49,7 +49,7 @@
       _note.index = 0;
     }
 
-    Game.prototype.load = function(music) {
+    Game.prototype.play = function(music) {
       console.log(music.src);
       _game.preload(music.src, music.img);
       _endTime = music.endTime;
@@ -58,7 +58,7 @@
       _note.speed = music.note.speed;
       _game.start();
       return _game.onload = function() {
-        var i, info, infoHtml, note, noteShadow, v, _i, _j, _k, _len, _ref;
+        var i, note, noteShadow, v, _i, _j, _len, _ref;
         _music = _game.assets[music.src];
         for (i = _i = 0; _i < 5; i = ++_i) {
           noteShadow = new Sprite(_noteWidth, _noteHeight);
@@ -69,20 +69,6 @@
           _game.rootScene.addChild(noteShadow);
         }
         _renderLogo();
-        console.log("logo");
-        info = new Entity();
-        info._element = document.createElement('div');
-        infoHtml = '<div id="info"><img src="' + music.img + '" class="music-image"> <div class="music-description"><span class="title"><i class="fa fa-headphones"></i>' + music.title + '</span><br> <span class="author">' + music.by + '</span><br> <span class="license">' + music.license + '</span><br> <span class="level">Level</span>';
-        for (i = _j = 0; _j <= 9; i = ++_j) {
-          if (i < music.level) {
-            infoHtml += '<i class="fa fa-star-o level"></i>';
-          }
-        }
-        infoHtml += '</p></div>';
-        info._element.innerHTML = infoHtml;
-        info.width = 560;
-        info.x = 20;
-        info.y = 160;
         _score.board = new Score({
           game: _game,
           offsetX: 20,
@@ -94,10 +80,9 @@
         });
         _score.board.generate();
         _score.board.update(0);
-        _game.rootScene.addChild(info);
         _game.rootScene.addChild(_note.group);
         _ref = _note.timing;
-        for (i = _k = 0, _len = _ref.length; _k < _len; i = ++_k) {
+        for (i = _j = 0, _len = _ref.length; _j < _len; i = ++_j) {
           v = _ref[i];
           note = new Sprite(_noteWidth, _noteHeight);
           note.image = _game.assets["img/chara1.png"];
@@ -255,12 +240,6 @@
               break;
             case 67:
               code = 4;
-              break;
-            case 70:
-              code = 5;
-              break;
-            case 86:
-              code = 6;
               break;
             default:
               code = null;
