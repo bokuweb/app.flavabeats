@@ -100,9 +100,9 @@
             if (_score.actual > _score.shown) {
               _score.shown += 100000 / _note.timing.length / 6;
               if (_score.actual < _score.shown) {
-                _game.score.shown = _game.score.actual;
+                _score.shown = _score.actual;
               }
-              _game.score.board.update(Math.ceil(_game.score.shown));
+              _score.board.update(Math.ceil(_score.shown));
             }
           }
           if (music.currentTime >= _endTime || music.duration <= music.currentTime) {

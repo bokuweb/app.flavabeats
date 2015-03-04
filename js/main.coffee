@@ -90,13 +90,12 @@ class @Game
           # score update
           if _score.actual > _score.shown
             _score.shown += 100000 / _note.timing.length / 6
-            if _score.actual < _score.shown then _game.score.shown = _game.score.actual
-            _game.score.board.update(Math.ceil(_game.score.shown))
+            if _score.actual < _score.shown then _score.shown = _score.actual
+            _score.board.update(Math.ceil(_score.shown))
 
         # game end timing
         if music.currentTime >= _endTime or music.duration <= music.currentTime
           if music.volume - 0.1 < 0 then music.volume = 0 else music.volume -= 0.1
-
           if music.volume <= 0
             music.stop()
             music.volume = 1
