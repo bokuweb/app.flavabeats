@@ -1,0 +1,134 @@
+/* ==========================================================================
+common
+========================================================================== */
+body {
+    margin: 0;
+    padding: 0;
+    background: url(../img/shattered.png);
+    text-shadow: -1px 1px 0 rgba(255,255,255,0.8);
+    color:#222;
+}
+
+#main {
+    width:980px;
+    margin:0 auto;
+    position:relative;
+}
+
+/* ==========================================================================
+splash scene
+========================================================================== */
+div.top-copylight {
+    width:300px;
+    margin:200px auto;
+}
+
+div.top-copylight > .copyright{
+    margin:0 0 0 30px;
+}
+
+/* ==========================================================================
+select & game scene
+========================================================================== */
+
+h1#logo {
+    margin:50px 0 0 0px;
+}
+
+.form-control {
+    height:16px;
+    padding:5px;
+}
+
+.search {
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.sort {
+    padding-top:5px;
+}
+
+#enchant-stage {
+    margin:0 auto;
+}
+
+img.music-image {
+    width:140px;
+    height:auto;
+    border-radius: 5px;
+}
+
+div#info {
+    position: absolute;
+    top:160px;
+    left:20px;
+    width:400px;
+}
+
+div.music-description {
+    position:absolute;
+    top:0;
+    left:160px;
+    font-family: sans-serif;
+}
+
+div.copyright {
+    margin: 50px auto 50px;
+    font-size: 11px;
+    width:300px;
+    color:#333;
+}
+
+i {
+    margin: 0 3px 0 0;
+}
+
+span.level {
+    margin : 0 5px 0 0;
+}
+
+span.title {
+    font-size:18px;
+}
+
+span.select-license {
+    font-size:12px;
+}
+
+div.item {
+    margin: 0 0 20px;
+}
+
+h1#game-scene-logo {
+    position:absolute;
+    left:20px;
+    top:10px;
+}
+/* ==========================================================================
+angular animate
+========================================================================== */
+.ng-enter,
+.ng-leave,
+.ng-move {
+    -webkit-transition: opacity 0.15s linear;
+    transition: opacity 0.2s linear;
+}
+.ng-enter {
+    opacity: 0;
+}
+.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+.ng-leave {
+    opacity: 1;
+}
+.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+.ng-move {
+    opacity: .5;
+}
+.ng-move.ng-move-active {
+    opacity: 1;
+}
