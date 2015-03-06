@@ -79,6 +79,10 @@ class @Game
 
 
 class Note
+  NOTE_MARGIN_RIGHT = 20
+  NOTE_OFFSET_X = 480
+  JUDGE_LABEL_X = 480 
+  JUDGE_LABEL_Y = 480   
   _game = null
   _pool = []
   _fallDist = 550
@@ -135,7 +139,7 @@ class Note
       noteDist = new Sprite(_width, _height)
       noteDist.y = -_height + _fallDist
       noteDist.opacity = 0.6
-      noteDist.x = i * ( _width + 20) + 480
+      noteDist.x = i * (_width + NOTE_MARGIN_RIGHT) + NOTE_OFFSET_X
       noteDist.image = _game.assets[g_res.noteDist]
       _game.rootScene.addChild(noteDist)
     return
@@ -151,9 +155,9 @@ class Note
     note = GameSys.getSprite(_pool)
     note.number = number
     note.key = _key[number]
-    note.destinationY = -_height + _fallDist  
+    note.destinationY = -_height + _fallDist
     note.y = -_height
-    note.x = note.key * (note.width+20) + 480
+    note.x = note.key * (note.width + NOTE_MARGIN_RIGHT) + NOTE_OFFSET_X
     note.frame  = 0
     note.timing = _timing[number]
     note.clear  = false
@@ -188,8 +192,8 @@ class Note
     else judge = "Bad"
 
     judgeLabel = new Label(judge)
-    judgeLabel.x = 450
-    judgeLabel.y = 450
+    judgeLabel.x = JUDGE_LABEL_X
+    judgeLabel.y = JUDGE_LABEL_Y
     judgeLabel.font = "24px"
     _game.rootScene.addChild(judgeLabel)
     judgeLabel.tl.setTimeBased()

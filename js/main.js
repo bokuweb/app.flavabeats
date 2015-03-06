@@ -119,7 +119,15 @@
   })();
 
   Note = (function() {
-    var _cb, _fallDist, _game, _gen, _group, _height, _index, _judge, _key, _pool, _preAllocate, _renderDist, _schedule, _speed, _threshold, _timing, _width;
+    var JUDGE_LABEL_X, JUDGE_LABEL_Y, NOTE_MARGIN_RIGHT, NOTE_OFFSET_X, _cb, _fallDist, _game, _gen, _group, _height, _index, _judge, _key, _pool, _preAllocate, _renderDist, _schedule, _speed, _threshold, _timing, _width;
+
+    NOTE_MARGIN_RIGHT = 20;
+
+    NOTE_OFFSET_X = 480;
+
+    JUDGE_LABEL_X = 480;
+
+    JUDGE_LABEL_Y = 480;
 
     _game = null;
 
@@ -214,7 +222,7 @@
         noteDist = new Sprite(_width, _height);
         noteDist.y = -_height + _fallDist;
         noteDist.opacity = 0.6;
-        noteDist.x = i * (_width + 20) + 480;
+        noteDist.x = i * (_width + NOTE_MARGIN_RIGHT) + NOTE_OFFSET_X;
         noteDist.image = _game.assets[g_res.noteDist];
         _game.rootScene.addChild(noteDist);
       }
@@ -237,7 +245,7 @@
       note.key = _key[number];
       note.destinationY = -_height + _fallDist;
       note.y = -_height;
-      note.x = note.key * (note.width + 20) + 480;
+      note.x = note.key * (note.width + NOTE_MARGIN_RIGHT) + NOTE_OFFSET_X;
       note.frame = 0;
       note.timing = _timing[number];
       note.clear = false;
@@ -284,8 +292,8 @@
         judge = "Bad";
       }
       judgeLabel = new Label(judge);
-      judgeLabel.x = 450;
-      judgeLabel.y = 450;
+      judgeLabel.x = JUDGE_LABEL_X;
+      judgeLabel.y = JUDGE_LABEL_Y;
       judgeLabel.font = "24px";
       _game.rootScene.addChild(judgeLabel);
       judgeLabel.tl.setTimeBased();
