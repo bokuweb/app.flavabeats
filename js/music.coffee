@@ -3,9 +3,8 @@
     id      : 0
     title   : 'ouroboros'
     level   : 1
-    by      : "2Melo"
-    license : "Licensed under Creative Commons
-               By Attribution-NonCommercial 3.0"
+    by      : "Kevin MacLeod (incompetech.com)"
+    license : "Licensed under Creative Commons By Attribution 3.0"
     img     : "music/ouroboros.jpg"
     src     : "music/Ouroboros.mp3"
     endTime : 110
