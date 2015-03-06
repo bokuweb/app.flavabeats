@@ -88,10 +88,10 @@
       var music;
       music = _game.music;
       if (music.currentTime >= _endTime || music.duration <= music.currentTime) {
-        if (music.volume - 0.1 < 0) {
+        if (music.volume - 0.01 < 0) {
           music.volume = 0;
         } else {
-          music.volume -= 0.1;
+          music.volume -= 0.01;
         }
         if (music.volume <= 0) {
           music.volume = 1;
