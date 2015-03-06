@@ -146,6 +146,13 @@ h1#game-scene-logo {
     animation:blink 1s ease-in-out infinite alternate;
 }
 
+#help {
+    position:absolute;
+    top:10px;
+    left:100%;
+    margin:0 0 0 -30px;
+    color:#222;
+}
 /* ==========================================================================
 result
 ========================================================================== */
