@@ -39,8 +39,10 @@ body {
 splash scene
 ========================================================================== */
 div.top-copylight {
-    width:300px;
-    margin:50px auto;
+    position:absolute;
+    top:100%;
+    left:50%;
+    margin: -100px 0 0 -30px;
 }
 
 div.top-copylight > .copyright{
