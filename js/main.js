@@ -98,7 +98,8 @@
           music.currentTime = 0;
           music.stop();
           _status = "stop";
-          console.log(_log);
+          console.log(_log.key);
+          console.log(_log.timing);
           return _endCallback(Math.ceil(_score.val));
         }
       }

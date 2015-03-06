@@ -66,8 +66,9 @@ class @Game
         music.currentTime = 0
         music.stop()
         _status = "stop"
-        console.log _log
-        _endCallback(Math.ceil(_score.val))
+        console.log _log.key
+        console.log _log.timing
+        _endCallback Math.ceil _score.val
 
   # keydown event detected
   document.addEventListener "keydown", (e)->
