@@ -15,7 +15,7 @@ class @Game
     enchant()
     _game = new Core 980, 600
     _game.fps = 60
-    _game.preload "img/chara1.png", "img/chara1_shadow.png", "img/logo.png", "img/score.png"
+    _game.preload g_resouces...
 
   play : (music)->
     _game.preload music.src, music.img
@@ -27,7 +27,7 @@ class @Game
         game : _game
         offsetX : 20
         offsetY : 360
-        url : "img/score.png"
+        url : g_res.score
         num : 6
         width: 36
         height: 49.7
@@ -126,14 +126,14 @@ class Note
       noteDist.y = -_height + _fallDist
       noteDist.opacity = 0.6
       noteDist.x = i * ( _width + 20) + 480
-      noteDist.image = _game.assets["img/chara1_shadow.png"]
+      noteDist.image = _game.assets[g_res.noteDist]
       _game.rootScene.addChild(noteDist)
     return
 
   _preAllocate = ->
     for v in _timing
       note = new Sprite(_width, _height)
-      note.image = _game.assets["img/chara1.png"]
+      note.image = _game.assets[g_res.note]
       GameSys.poolSprite(_pool, note)
     return
 
@@ -151,7 +151,7 @@ class Note
     note.tl.clear()
     note.tl.setTimeBased()
     note.tl.scaleTo(1, 1, 0)
-    note.tl.moveY(note.destinationY, (_fallDist / _speed) * 1000)
+    note.tl.moveY(note.destinationY, (note.timing - _game.music.currentTime)*1000)
     note.hasClearAnimationStarted = false
     _group.addChild(note)
     note.addEventListener "enterframe", _schedule
@@ -176,9 +176,11 @@ class Note
     if -_threshold.great < diffTime < _threshold.great then judge = "Great"
     else if -_threshold.good < diffTime < _threshold.good then judge = "Good"
     else judge = "Bad"
+
     judgeLabel = new Label(judge)
     judgeLabel.x = 450
     judgeLabel.y = 450
+    judgeLabel.font = "24px"
     _game.rootScene.addChild(judgeLabel)
     judgeLabel.tl.setTimeBased()
     judgeLabel.tl.fadeOut(300).and().moveY(400, 300).then ()-> _game.rootScene.removeChild(judgeLabel)
@@ -201,7 +203,7 @@ class Score
       score.frame = i
       score.x = @offsetX + score.width * i
       score.y = @offsetY
-      _group.addChild(score)   
+      _group.addChild(score)
       i++
     @game.rootScene.addChild(_group)
     @update 0

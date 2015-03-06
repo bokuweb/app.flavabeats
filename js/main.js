@@ -28,7 +28,7 @@
       enchant();
       _game = new Core(980, 600);
       _game.fps = 60;
-      _game.preload("img/chara1.png", "img/chara1_shadow.png", "img/logo.png", "img/score.png");
+      _game.preload.apply(_game, g_resouces);
     }
 
     Game.prototype.play = function(music) {
@@ -41,7 +41,7 @@
           game: _game,
           offsetX: 20,
           offsetY: 360,
-          url: "img/score.png",
+          url: g_res.score,
           num: 6,
           width: 36,
           height: 49.7
@@ -202,7 +202,7 @@
         noteDist.y = -_height + _fallDist;
         noteDist.opacity = 0.6;
         noteDist.x = i * (_width + 20) + 480;
-        noteDist.image = _game.assets["img/chara1_shadow.png"];
+        noteDist.image = _game.assets[g_res.noteDist];
         _game.rootScene.addChild(noteDist);
       }
     };
@@ -212,7 +212,7 @@
       for (_i = 0, _len = _timing.length; _i < _len; _i++) {
         v = _timing[_i];
         note = new Sprite(_width, _height);
-        note.image = _game.assets["img/chara1.png"];
+        note.image = _game.assets[g_res.note];
         GameSys.poolSprite(_pool, note);
       }
     };
@@ -232,7 +232,7 @@
       note.tl.clear();
       note.tl.setTimeBased();
       note.tl.scaleTo(1, 1, 0);
-      note.tl.moveY(note.destinationY, (_fallDist / _speed) * 1000);
+      note.tl.moveY(note.destinationY, (note.timing - _game.music.currentTime) * 1000);
       note.hasClearAnimationStarted = false;
       _group.addChild(note);
       return note.addEventListener("enterframe", _schedule);
@@ -273,6 +273,7 @@
       judgeLabel = new Label(judge);
       judgeLabel.x = 450;
       judgeLabel.y = 450;
+      judgeLabel.font = "24px";
       _game.rootScene.addChild(judgeLabel);
       judgeLabel.tl.setTimeBased();
       judgeLabel.tl.fadeOut(300).and().moveY(400, 300).then(function() {
