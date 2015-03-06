@@ -176,7 +176,7 @@ class Note
       @rotate((music.currentTime - @oldtime) * 500)
     @oldtime = music.currentTime
 
-    if _timing[@number] - music.currentTime < -1
+      if _timing[@number] - music.currentTime < -0.3
       @tl.fadeOut(300).then ()-> _group.removeChild(@)
 
     if @clear and not @hasClearAnimationStarted
