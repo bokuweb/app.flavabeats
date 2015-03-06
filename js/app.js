@@ -49,6 +49,8 @@
       });
     };
     _endCallback = function(score) {
+      var storage;
+      storage = localStorage;
       console.log("end!!! " + score);
       return $scope.$apply(function() {
         $scope.end = true;
@@ -77,7 +79,10 @@
             $scope.result = "Clear!";
           }
         }
-        return $scope.tweet = "http://twitter.com/?status=" + g_music[_gameId].title + " " + $scope.result + " score " + $scope.score + " rank " + $scope.rank + "&hasgtags=#flavabeats";
+        $scope.tweet = "http://twitter.com/?status=" + g_music[_gameId].title + " " + $scope.result + " score " + $scope.score + " rank " + $scope.rank + "&hasgtags=#flavabeats";
+        if ((storage.getItem(_gameId) != null) || storage.getItem(_gameId) < score) {
+          return storage.setItem(_gameId, score);
+        }
       });
     };
     _gameId = $routeParams.id;
@@ -108,15 +113,21 @@
   });
 
   flavaApp.controller('GameInfoCtrl', function($scope) {
-    var i, level, _i;
+    var i, level, storage, _i;
     $scope.music = g_music[_gameId];
+    storage = localStorage;
     level = 'Level ';
     for (i = _i = 0; _i <= 9; i = ++_i) {
       if (i < $scope.music.level) {
         level += '<i class="fa fa-star-o level"></i>';
       }
     }
-    return $scope.music.levelIcon = level;
+    $scope.music.levelIcon = level;
+    if (storage.getItem(_gameId) != null) {
+      return $scope.music.highScore = storage.getItem(_gameId);
+    } else {
+      return $scope.music.highScore = "none";
+    }
   });
 
 }).call(this);

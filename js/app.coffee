@@ -35,6 +35,7 @@ flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
       $scope.start = off
 
   _endCallback = (score)->
+    storage = localStorage
     console.log "end!!! " + score
     $scope.$apply ()->
       $scope.end = on
@@ -50,6 +51,9 @@ flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
       if $scope.rank is "D" then $scope.result = "Failed" else
         if $scope.score >= 100000 then $scope.result = "Perfect!!" else $scope.result = "Clear!" 
       $scope.tweet = "http://twitter.com/?status="+g_music[_gameId].title+" "+$scope.result+" score "+$scope.score+" rank "+$scope.rank+"&hasgtags=#flavabeats"
+
+      if storage.getItem(_gameId)? or storage.getItem(_gameId) < score
+        storage.setItem _gameId, score
 
   _gameId = $routeParams.id
   unless _game? then _game = new Game()
@@ -67,8 +71,11 @@ flavaApp.controller 'SelectCtrl', ($scope)->
 
 flavaApp.controller 'GameInfoCtrl', ($scope)->
   $scope.music = g_music[_gameId]
+  storage = localStorage
   level = 'Level '
   for i in [0..9] when i < $scope.music.level
     level += '<i class="fa fa-star-o level"></i>'
   $scope.music.levelIcon = level
+
+  if storage.getItem(_gameId)? then $scope.music.highScore = storage.getItem(_gameId) else $scope.music.highScore = "none"
 
