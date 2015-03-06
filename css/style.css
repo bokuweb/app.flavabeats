@@ -42,11 +42,12 @@ div.top-copylight {
     position:absolute;
     top:100%;
     left:50%;
-    margin: -100px 0 0 -30px;
+    text-align:center;
+
 }
 
 div.top-copylight > .copyright{
-    margin:0 0 0 30px;
+
 }
 
 .click-message{
