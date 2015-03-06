@@ -13,6 +13,8 @@
       templateUrl: 'splash.html'
     }).when('/select', {
       templateUrl: 'select.html'
+    }).when('/help', {
+      templateUrl: 'help.html'
     }).when('/game/:id', {
       controller: 'GameCtrl',
       templateUrl: 'game.html'
