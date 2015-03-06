@@ -277,8 +277,8 @@
       music = _game.music;
       if (this.oldtime != null) {
         this.rotate((music.currentTime - this.oldtime) * 500);
-        this.oldtime = music.currentTime;
       }
+      this.oldtime = music.currentTime;
       if (_timing[this.number] - music.currentTime < -0.3) {
         this.tl.fadeOut(300).then(function() {
           return _group.removeChild(this);
