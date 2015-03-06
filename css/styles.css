@@ -191,7 +191,7 @@ h2::after { content: " "; border: solid 2px #3dc9b3; display: block; width: 35px
 /* ==========================================================================
 Hero
 ========================================================================== */
-.hero { padding: 165px 0 300px 0; height: auto; }
+.hero { padding: 65px 0 300px 0; height: auto; }
 .hero h1 { font-size: 40px; letter-spacing: 12px; margin: 10px; }
 .hero h1 span { color: #a1a9b0; display: inline-block; }
 .hero p { letter-spacing: 1px; }
