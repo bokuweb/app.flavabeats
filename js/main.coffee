@@ -9,10 +9,7 @@ class @Game
   _loadCallback = null
   _endCallback = null
   _startCallback = null
-  _log =
-    key : []
-    timing : []
-
+  
   constructor : -> enchant()
 
   start : (music, loadCallback, startCallback, endCallback)->
@@ -100,6 +97,9 @@ class Note
   _threshold =
     great : 0.1
     good : 0.2
+  _log =
+    key : []
+    timing : []    
 
   constructor : (game, params, cb)->
     _game = game

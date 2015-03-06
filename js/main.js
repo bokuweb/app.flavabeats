@@ -3,7 +3,7 @@
   var GameSys, Note, Score;
 
   this.Game = (function() {
-    var _endCallback, _endGameIfTimeOver, _endTime, _game, _judgeEndCallback, _loadCallback, _log, _mainLoop, _note, _score, _startCallback, _status;
+    var _endCallback, _endGameIfTimeOver, _endTime, _game, _judgeEndCallback, _loadCallback, _mainLoop, _note, _score, _startCallback, _status;
 
     _endTime = 90;
 
@@ -23,11 +23,6 @@
     _endCallback = null;
 
     _startCallback = null;
-
-    _log = {
-      key: [],
-      timing: []
-    };
 
     function Game() {
       enchant();
@@ -124,7 +119,7 @@
   })();
 
   Note = (function() {
-    var JUDGE_LABEL_X, JUDGE_LABEL_Y, NOTE_MARGIN_RIGHT, NOTE_OFFSET_X, _cb, _fallDist, _game, _gen, _group, _height, _index, _judge, _key, _pool, _preAllocate, _renderDist, _schedule, _speed, _threshold, _timing, _width;
+    var JUDGE_LABEL_X, JUDGE_LABEL_Y, NOTE_MARGIN_RIGHT, NOTE_OFFSET_X, _cb, _fallDist, _game, _gen, _group, _height, _index, _judge, _key, _log, _pool, _preAllocate, _renderDist, _schedule, _speed, _threshold, _timing, _width;
 
     NOTE_MARGIN_RIGHT = 20;
 
@@ -159,6 +154,11 @@
     _threshold = {
       great: 0.1,
       good: 0.2
+    };
+
+    _log = {
+      key: [],
+      timing: []
     };
 
     function Note(game, params, cb) {
