@@ -66,7 +66,7 @@ class @Game
         music.currentTime = 0
         music.stop()
         _status = "stop"
-        _endCallback(_score.val)
+        _endCallback(Math.ceil(_score.val))
 
   # keydown event detected
   document.addEventListener "keydown", (e)->
@@ -180,10 +180,10 @@ class Note
     music = _game.music
     if @oldtime?
       @rotate((music.currentTime - @oldtime) * 500)
-    @oldtime = music.currentTime
+      @oldtime = music.currentTime
 
       if _timing[@number] - music.currentTime < -0.3
-      @tl.fadeOut(300).then ()-> _group.removeChild(@)
+        @tl.fadeOut(300).then ()-> _group.removeChild(@)
 
     if @clear and not @hasClearAnimationStarted
       @tl.clear()

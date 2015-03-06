@@ -3,7 +3,7 @@
   var GameSys, Note, Score;
 
   this.Game = (function() {
-    var _endCallback, _endGameIfTimeOver, _endTime, _game, _judgeEndCallback, _loadCallback, _mainLoop, _note, _score, _startCallback, _status;
+    var _endCallback, _endGameIfTimeOver, _endTime, _game, _judgeEndCallback, _loadCallback, _log, _mainLoop, _note, _score, _startCallback, _status;
 
     _endTime = 90;
 
@@ -23,6 +23,11 @@
     _endCallback = null;
 
     _startCallback = null;
+
+    _log = {
+      key: [],
+      timing: []
+    };
 
     function Game() {
       enchant();
@@ -89,11 +94,11 @@
           music.volume -= 0.1;
         }
         if (music.volume <= 0) {
-          music.stop();
           music.volume = 1;
           music.currentTime = 0;
+          music.stop();
           _status = "stop";
-          return _endCallback(_score.val);
+          return _endCallback(Math.ceil(_score.val));
         }
       }
     };
@@ -198,6 +203,12 @@
         case 67:
           code = 4;
           break;
+        default:
+          code = null;
+      }
+      if ((0 <= code && code <= 4)) {
+        _log.key.push(code);
+        _log.timing.push(_game.music.currentTime);
       }
       _ref = _group.childNodes;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -264,12 +275,12 @@
       music = _game.music;
       if (this.oldtime != null) {
         this.rotate((music.currentTime - this.oldtime) * 500);
-      }
-      this.oldtime = music.currentTime;
-      if (_timing[this.number] - music.currentTime < -1) {
-        this.tl.fadeOut(300).then(function() {
-          return _group.removeChild(this);
-        });
+        this.oldtime = music.currentTime;
+        if (_timing[this.number] - music.currentTime < -0.3) {
+          this.tl.fadeOut(300).then(function() {
+            return _group.removeChild(this);
+          });
+        }
       }
       if (this.clear && !this.hasClearAnimationStarted) {
         this.tl.clear();
