@@ -197,7 +197,7 @@ class Note
     judgeLabel.font = "32px Arial"
     _game.rootScene.addChild(judgeLabel)
     judgeLabel.tl.setTimeBased()
-    judgeLabel.tl.fadeOut(300).and().moveY(200, 200).then ()-> _game.rootScene.removeChild(judgeLabel)
+    judgeLabel.tl.fadeOut(300).and().moveY(240, 400).then ()-> _game.rootScene.removeChild(judgeLabel)
     _cb(judge)
 
 class Score
