@@ -297,7 +297,7 @@
       judgeLabel.font = "32px Arial";
       _game.rootScene.addChild(judgeLabel);
       judgeLabel.tl.setTimeBased();
-      judgeLabel.tl.fadeOut(300).and().moveY(400, 200).then(function() {
+      judgeLabel.tl.fadeOut(300).and().moveY(200, 200).then(function() {
         return _game.rootScene.removeChild(judgeLabel);
       });
       return _cb(judge);
