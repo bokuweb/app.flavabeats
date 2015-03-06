@@ -1,9 +1,6 @@
-_game = null
-_gameId = 0
-_loadCallback = -> console.log "load"
-_endCallback = -> console.log "end"
-
 flavaApp = angular.module('flavaApp', ['ngRoute','ngAnimate', 'ngSanitize'])
+
+_gameId = 0
 
 flavaApp.config ($routeProvider)->
   $routeProvider
@@ -12,16 +9,42 @@ flavaApp.config ($routeProvider)->
   .when '/select',
     templateUrl: 'select.html'
   .when '/game/:id',
-    controller: 'gameCtrl'
-    templateUrl: 'game.html'    
+    controller: 'GameCtrl'
+    templateUrl: 'game.html'
   .otherwise
     redirectTo: '/'
 
-flavaApp.controller 'splashCtrl', ($scope)->
+flavaApp.controller 'SplashCtrl', ($scope)->
   agent = navigator.userAgent
   if agent.search(/(iPhone|iPod|Android|Mobile)/) isnt -1 then $scope.isMobile = on else $scope.isMobile = off
 
-flavaApp.controller 'gameCtrl', ($scope, $routeParams)->
+flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
+  $scope.end = off
+  $scope.loaded = off
+
+  _loadCallback = ->
+    console.log "load complete"
+    $scope.$apply ()->
+      $scope.loaded = on
+
+  _endCallback = (score)->
+    console.log "end!!! " + score
+    $scope.$apply ()->
+      $scope.end = on
+      $scope.score = score
+      if score > 97500      then  $scope.rank ="SSS"
+      else if score > 95000 then  $scope.rank ="SS"
+      else if score > 92500 then  $scope.rank ="S"
+      else if score > 90000 then  $scope.rank ="A"
+      else if score > 80000 then  $scope.rank ="B"
+      else if score > 70000 then  $scope.rank ="C"
+      else $scope.rank ="D"
+
+      if $scope.rank is "D" then $scope.result = "Failed" else
+        if $scope.score >= 100000 then $scope.result = "Perfect!!" else $scope.result = "Clear!" 
+        $scope.tweet = "http://twitter.com/?status="+g_music[_gameId].title+" "+$scope.result+" score "+$scope.score+" rank "+$scope.rank
+    _game = null
+
   _gameId = $routeParams.id
   _game = new Game(_loadCallback, _endCallback)
   _game.play(g_music[$routeParams.id])
@@ -31,7 +54,7 @@ flavaApp.controller 'SelectCtrl', ($scope)->
   $scope.music = g_music
   for value in $scope.music
     level = 'Level '
-    for i in [0..9] when i < value.level 
+    for i in [0..9] when i < value.level
       level += '<i class="fa fa-star-o level"></i>'
     value.levelIcon = level
   $scope.changeSort =-> $scope.desc = not $scope.desc
@@ -39,7 +62,7 @@ flavaApp.controller 'SelectCtrl', ($scope)->
 flavaApp.controller 'GameInfoCtrl', ($scope)->
   $scope.music = g_music[_gameId]
   level = 'Level '
-  for i in [0..9] when i < $scope.music.level 
+  for i in [0..9] when i < $scope.music.level
     level += '<i class="fa fa-star-o level"></i>'
   $scope.music.levelIcon = level
 

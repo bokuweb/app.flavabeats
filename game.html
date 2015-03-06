@@ -1,14 +1,31 @@
-<div id="main">
-    <h1 id="game-scene-logo"><img src="img/logo.png" alt="無料音ゲー flavabeats"></h1>
-    <div id="info" ng-controller="GameInfoCtrl">
-        <img ng-src="{{music.img}}" class="music-image">
-        <div class="music-description">
-            <span class="title"><i class="fa fa-headphones"></i>{{music.title}}</span><br>
-            <span class="author">{{music.by}}</span><br>
-            <span class="select-license">{{music.license}}</span><br>
-            <span class="level" ng-bind-html="music.levelIcon"></span>
+<div ng-controller="GameInfoCtrl">    
+    <div id="main">
+        <h1 id="game-scene-logo"><img src="img/logo.png" alt="無料音ゲー flavabeats"></h1>
+        <div class="spinner" ng-hide="loaded">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <div id="info">
+            <img ng-src="{{music.img}}" class="music-image">
+            <div class="music-description">
+                <span class="title"><i class="fa fa-headphones"></i>{{music.title}}</span><br>
+                <span class="author">{{music.by}}</span><br>
+                <span class="select-license">{{music.license}}</span><br>
+                <span class="level" ng-bind-html="music.levelIcon"></span>
+            </div>
+        </div>
+        <div id="enchant-stage"></div>
+        <div class="copyright">Copyright © 2014 flavabeats All Rights Reserved.</div>
+    </div>
+    <div ng-show="end" id="overlay">
+        <div ng-show="end" id="overlay-inner">
+            <div class="stats">
+                <p class="rank"><span class="explain">your rank is..</span>{{rank}}</p>
+                <p class="result">{{result}}</p>
+                <p class="score">{{score}}</p>
+                <a ng-href="#/select" class="to-main-menu"><i class="fa fa-th-large"></i>Menu</a>
+                <a href="{{tweet}}" class="to-twitter" target="_blank"><i class="fa fa-twitter"></i>Tweet</a>
+            </div>
         </div>
     </div>
-    <div id="enchant-stage"></div>
-    <div class="copyright">Copyright © 2014 flavabeats All Rights Reserved.</div>
 </div>

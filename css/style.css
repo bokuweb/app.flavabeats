@@ -15,6 +15,9 @@ body {
     position:relative;
 }
 
+#view {
+
+}
 /* ==========================================================================
 splash scene
 ========================================================================== */
@@ -105,14 +108,86 @@ h1#game-scene-logo {
     left:20px;
     top:10px;
 }
+
+/* ==========================================================================
+result
+========================================================================== */
+#overlay {
+    width:100%;
+    height:100%;
+    background:#222;
+    opacity:0.95;
+    position:absolute;
+    z-index:900;
+    top:0;
+    left:0;
+    color:#fff;
+}
+
+#overlay-inner {
+    width:980px;
+    margin:0 auto;
+    position:relative;
+}
+
+div.stats {
+    width:560px;
+    margin: 60px auto;
+    text-align:center;
+}
+
+p.rank, p.result, p.score {
+    text-shadow:none;
+    font-size:108px;
+    font-family:"Arial";
+    font-weight:bold;
+    line-height:114px;
+    margin:0;
+    padding:0;
+}
+
+ p.score {
+    margin:0 0 40px;
+}
+
+a.to-main-menu {
+    background:#E74C3C;
+    padding:15px 30px;
+    color:#fff;
+    border-radius:2px;
+    font-family:"Arial";
+    margin: 40px 0 0 0;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+a.to-twitter {
+    background:#3498DB;
+    padding:15px 30px;
+    color:#fff;
+    border-radius:2px;
+    font-family:"Arial";
+    margin: 40px 0 0 0;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+a.to-main-menu:hover,
+a.to-twitter:hover {
+    opacity:0.8;
+}
+span.explain {
+    font-size:24px;
+}
+
+
 /* ==========================================================================
 angular animate
 ========================================================================== */
 .ng-enter,
-.ng-leave,
 .ng-move {
-    -webkit-transition: opacity 0.15s linear;
-    transition: opacity 0.2s linear;
+    -webkit-transition: opacity 0.4s linear;
+    transition: opacity 0.4s linear;
 }
 .ng-enter {
     opacity: 0;
@@ -131,4 +206,49 @@ angular animate
 }
 .ng-move.ng-move-active {
     opacity: 1;
+}
+
+/* ==========================================================================
+loader
+========================================================================== */
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top:50%;
+  left:50%;
+}
+
+.double-bounce1, .double-bounce2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #E74C3C;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  -webkit-animation: bounce 2.0s infinite ease-in-out;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
 }

@@ -56,7 +56,7 @@ class @Game
         music.volume = 1
         music.currentTime = 0
         _status = "stop"
-        _endCallback()
+        _endCallback(_score.val)
 
   # keydown event detected
   document.addEventListener "keydown", (e)->

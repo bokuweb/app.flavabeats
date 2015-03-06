@@ -83,7 +83,7 @@
           music.volume = 1;
           music.currentTime = 0;
           _status = "stop";
-          return _endCallback();
+          return _endCallback(_score.val);
         }
       }
     };
