@@ -8,7 +8,7 @@
                By Attribution-NonCommercial 3.0"
     img     : "music/ouroboros.jpg"
     src     : "music/Ouroboros.mp3"
-    endTime : 110
+    endTime : 170
     note    :
       timing : []
       key    : []
