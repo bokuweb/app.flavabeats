@@ -32,13 +32,20 @@
   });
 
   flavaApp.controller('GameCtrl', function($scope, $routeParams) {
-    var _endCallback, _loadCallback;
+    var _endCallback, _loadCallback, _startCallback;
     $scope.end = false;
     $scope.loaded = false;
+    $scope.start = false;
     _loadCallback = function() {
       console.log("load complete");
       return $scope.$apply(function() {
-        return $scope.loaded = true;
+        $scope.loaded = true;
+        return $scope.start = true;
+      });
+    };
+    _startCallback = function() {
+      return $scope.$apply(function() {
+        return $scope.start = false;
       });
     };
     _endCallback = function(score) {
@@ -77,7 +84,7 @@
     if (_game == null) {
       _game = new Game();
     }
-    return _game.start(g_music[$routeParams.id], _loadCallback, _endCallback);
+    return _game.start(g_music[$routeParams.id], _loadCallback, _startCallback, _endCallback);
   });
 
   flavaApp.controller('SelectCtrl', function($scope) {

@@ -22,10 +22,17 @@ flavaApp.controller 'SplashCtrl', ($scope)->
 flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
   $scope.end = off
   $scope.loaded = off
+  $scope.start = off
+
   _loadCallback = ->
     console.log "load complete"
     $scope.$apply ()->
       $scope.loaded = on
+      $scope.start = on
+
+  _startCallback = ->
+    $scope.$apply ()->
+      $scope.start = off
 
   _endCallback = (score)->
     console.log "end!!! " + score
@@ -46,7 +53,7 @@ flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
 
   _gameId = $routeParams.id
   unless _game? then _game = new Game()
-  _game.start(g_music[$routeParams.id], _loadCallback, _endCallback)
+  _game.start(g_music[$routeParams.id], _loadCallback, _startCallback, _endCallback)
 
 flavaApp.controller 'SelectCtrl', ($scope)->
   $scope.desc = off

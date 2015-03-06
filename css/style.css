@@ -18,6 +18,23 @@ body {
 #view {
 
 }
+
+
+@-webkit-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-moz-keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@keyframes blink{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
 /* ==========================================================================
 splash scene
 ========================================================================== */
@@ -36,20 +53,6 @@ div.top-copylight > .copyright{
     animation:blink 1s ease-in-out infinite alternate;
 }
 
-@-webkit-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-}
-
-@-moz-keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-}
-
-@keyframes blink{
-    0% {opacity:0;}
-    100% {opacity:1;}
-}
 
 /* ==========================================================================
 select & game scene
@@ -128,6 +131,15 @@ h1#game-scene-logo {
     position:absolute;
     left:20px;
     top:10px;
+}
+
+#start-message{
+    position:absolute;
+    top:50%;
+    left:50%;    
+    -webkit-animation:blink 1s ease-in-out infinite alternate;
+    -moz-animation:blink 1s ease-in-out infinite alternate;
+    animation:blink 1s ease-in-out infinite alternate;
 }
 
 /* ==========================================================================

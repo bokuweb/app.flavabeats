@@ -8,18 +8,19 @@ class @Game
   _note = null
   _loadCallback = null
   _endCallback = null
+  _startCallback = null
   
-  constructor : ()->
-    enchant()
+  constructor : -> enchant()
 
-  start : (music, loadCallback, endCallback)->
+  start : (music, loadCallback, startCallback, endCallback)->
     _loadCallback = loadCallback
+    _startCallback = startCallback
     _endCallback = endCallback
     _game = new Core 980, 600
     _game.fps = 60
     _game.preload g_resouces...
     _game.preload music.src, music.img
-    
+
     _game.start()
     _game.onload = ->
       _endTime = music.endTime
@@ -43,6 +44,11 @@ class @Game
           _endGameIfTimeOver()
       _loadCallback()
 
+  _mainLoop = ->
+    if _status is "playing"
+      _note.create()
+      _endGameIfTimeOver()
+
   _judgeEndCallback = (judge)->
     if judge is "Great" then _score.val += 100000 / _note.getNum()
     else if judge is "Good" then _score.val += 70000 / _note.getNum()
@@ -64,8 +70,11 @@ class @Game
     music = _game.music
     if _status is "stop"
       if e.keyCode is 13
-        music.play()
+        _startCallback()
         _status = "playing"
+        setTimeout ()->
+          music.play()
+        , 1000
     else if _status = "playing" then _note.seek(e.keyCode)
 
 

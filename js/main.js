@@ -3,7 +3,7 @@
   var GameSys, Note, Score;
 
   this.Game = (function() {
-    var _endCallback, _endGameIfTimeOver, _endTime, _game, _judgeEndCallback, _loadCallback, _note, _score, _status;
+    var _endCallback, _endGameIfTimeOver, _endTime, _game, _judgeEndCallback, _loadCallback, _mainLoop, _note, _score, _startCallback, _status;
 
     _endTime = 90;
 
@@ -22,12 +22,15 @@
 
     _endCallback = null;
 
+    _startCallback = null;
+
     function Game() {
       enchant();
     }
 
-    Game.prototype.start = function(music, loadCallback, endCallback) {
+    Game.prototype.start = function(music, loadCallback, startCallback, endCallback) {
       _loadCallback = loadCallback;
+      _startCallback = startCallback;
       _endCallback = endCallback;
       _game = new Core(980, 600);
       _game.fps = 60;
@@ -58,6 +61,13 @@
         });
         return _loadCallback();
       };
+    };
+
+    _mainLoop = function() {
+      if (_status === "playing") {
+        _note.create();
+        return _endGameIfTimeOver();
+      }
     };
 
     _judgeEndCallback = function(judge) {
@@ -93,8 +103,11 @@
       music = _game.music;
       if (_status === "stop") {
         if (e.keyCode === 13) {
-          music.play();
-          return _status = "playing";
+          _startCallback();
+          _status = "playing";
+          return setTimeout(function() {
+            return music.play();
+          }, 1000);
         }
       } else if (_status = "playing") {
         return _note.seek(e.keyCode);
