@@ -1,5 +1,7 @@
 _game = null
 _gameId = 0
+_loadCallback = -> console.log "load"
+_endCallback = -> console.log "end"
 
 flavaApp = angular.module('flavaApp', ['ngRoute','ngAnimate', 'ngSanitize'])
 
@@ -21,7 +23,7 @@ flavaApp.controller 'splashCtrl', ($scope)->
 
 flavaApp.controller 'gameCtrl', ($scope, $routeParams)->
   _gameId = $routeParams.id
-  _game = new Game()
+  _game = new Game(_loadCallback, _endCallback)
   _game.play(g_music[$routeParams.id])
 
 flavaApp.controller 'SelectCtrl', ($scope)->
