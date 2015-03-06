@@ -123,11 +123,11 @@
 
     NOTE_MARGIN_RIGHT = 20;
 
-    NOTE_OFFSET_X = 280;
+    NOTE_OFFSET_X = 480;
 
     JUDGE_LABEL_X = 500;
 
-    JUDGE_LABEL_Y = 480;
+    JUDGE_LABEL_Y = 280;
 
     _game = null;
 
