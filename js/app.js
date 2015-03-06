@@ -21,9 +21,9 @@
       templateUrl: 'splash.html'
     }).when('/select', {
       templateUrl: 'select.html'
-    }).when('/ouroboros/:id', {
+    }).when('/game/:id', {
       controller: 'gameCtrl',
-      templateUrl: 'ouroboros.html'
+      templateUrl: 'game.html'
     }).otherwise({
       redirectTo: '/'
     });

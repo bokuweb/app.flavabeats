@@ -12,7 +12,7 @@
             </div>
             <div class="row">
                 <div class="col-md-3 item" ng-repeat="m in music | filter:search | orderBy:'level':desc">
-                    <a ng-href="#/{{m.title}}/{{m.id}}">
+                    <a ng-href="#/game/{{m.id}}">
                         <img ng-src="{{m.img}}" class="music-image">
                         <div class="music-description">
                             <span class="title"><i class="fa fa-headphones"></i>{{m.title}}</span><br>
