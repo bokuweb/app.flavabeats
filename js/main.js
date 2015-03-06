@@ -3,7 +3,7 @@
   var GameSys, Note, Score;
 
   this.Game = (function() {
-    var _endCallback, _endGameIfTimeOver, _endTime, _game, _judgeEndCallback, _loadCallback, _mainLoop, _note, _score, _startCallback, _status;
+    var _endCallback, _endGameIfTimeOver, _endTime, _game, _judgeEndCallback, _loadCallback, _log, _mainLoop, _note, _score, _startCallback, _status;
 
     _endTime = 90;
 
@@ -23,6 +23,11 @@
     _endCallback = null;
 
     _startCallback = null;
+
+    _log = {
+      key: [],
+      timing: []
+    };
 
     function Game() {
       enchant();
@@ -93,24 +98,29 @@
           music.currentTime = 0;
           music.stop();
           _status = "stop";
+          console.log(_log);
           return _endCallback(Math.ceil(_score.val));
         }
       }
     };
 
     document.addEventListener("keydown", function(e) {
-      var music;
+      var code, music;
       music = _game.music;
       if (_status === "stop") {
         if (e.keyCode === 13) {
           _startCallback();
           _status = "playing";
-          return setTimeout(function() {
+          setTimeout(function() {
             return music.play();
           }, 1000);
         }
       } else if (_status = "playing") {
-        return _note.seek(e.keyCode);
+        code = _note.seek(e.keyCode);
+      }
+      if ((0 <= code && code <= 4)) {
+        _log.key.push(code);
+        return _log.timing.push(_game.music.currentTime);
       }
     });
 
@@ -119,7 +129,7 @@
   })();
 
   Note = (function() {
-    var JUDGE_LABEL_X, JUDGE_LABEL_Y, NOTE_MARGIN_RIGHT, NOTE_OFFSET_X, _cb, _fallDist, _game, _gen, _group, _height, _index, _judge, _key, _log, _pool, _preAllocate, _renderDist, _schedule, _speed, _threshold, _timing, _width;
+    var JUDGE_LABEL_X, JUDGE_LABEL_Y, NOTE_MARGIN_RIGHT, NOTE_OFFSET_X, _cb, _fallDist, _game, _gen, _group, _height, _index, _judge, _key, _pool, _preAllocate, _renderDist, _schedule, _speed, _threshold, _timing, _width;
 
     NOTE_MARGIN_RIGHT = 20;
 
@@ -154,11 +164,6 @@
     _threshold = {
       great: 0.1,
       good: 0.2
-    };
-
-    _log = {
-      key: [],
-      timing: []
     };
 
     function Note(game, params, cb) {
@@ -206,10 +211,6 @@
         default:
           code = null;
       }
-      if ((0 <= code && code <= 4)) {
-        _log.key.push(code);
-        _log.timing.push(_game.music.currentTime);
-      }
       _ref = _group.childNodes;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         value = _ref[_i];
@@ -221,6 +222,7 @@
           }
         }
       }
+      return code;
     };
 
     Note.prototype.getNum = function() {
@@ -276,11 +278,11 @@
       if (this.oldtime != null) {
         this.rotate((music.currentTime - this.oldtime) * 500);
         this.oldtime = music.currentTime;
-        if (_timing[this.number] - music.currentTime < -0.3) {
-          this.tl.fadeOut(300).then(function() {
-            return _group.removeChild(this);
-          });
-        }
+      }
+      if (_timing[this.number] - music.currentTime < -0.3) {
+        this.tl.fadeOut(300).then(function() {
+          return _group.removeChild(this);
+        });
       }
       if (this.clear && !this.hasClearAnimationStarted) {
         this.tl.clear();

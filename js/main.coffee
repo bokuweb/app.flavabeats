@@ -9,7 +9,10 @@ class @Game
   _loadCallback = null
   _endCallback = null
   _startCallback = null
-  
+  _log =
+    key : []
+    timing : []
+
   constructor : -> enchant()
 
   start : (music, loadCallback, startCallback, endCallback)->
@@ -63,6 +66,7 @@ class @Game
         music.currentTime = 0
         music.stop()
         _status = "stop"
+        console.log _log
         _endCallback(Math.ceil(_score.val))
 
   # keydown event detected
@@ -75,7 +79,10 @@ class @Game
         setTimeout ()->
           music.play()
         , 1000
-    else if _status = "playing" then _note.seek(e.keyCode)
+    else if _status = "playing" then code = _note.seek(e.keyCode)
+    if 0 <= code <= 4
+      _log.key.push code
+      _log.timing.push _game.music.currentTime
 
 
 class Note
@@ -97,9 +104,7 @@ class Note
   _threshold =
     great : 0.1
     good : 0.2
-  _log =
-    key : []
-    timing : []    
+    
 
   constructor : (game, params, cb)->
     _game = game
@@ -127,16 +132,14 @@ class Note
       when 68 then code = 3 # D
       when 67 then code = 4 # C
       else code = null
-    if 0 <= code <= 4
-      _log.key.push code
-      _log.timing.push _game.music.currentTime
+
     for value in _group.childNodes
       if value.key is code
         if -1 < value.timing - _game.music.currentTime < 1
           value.clear = true
           value.clearTime = _game.music.currentTime
           break
-    return
+    return code
 
   getNum : -> _timing.length
     
@@ -182,8 +185,8 @@ class Note
       @rotate((music.currentTime - @oldtime) * 500)
       @oldtime = music.currentTime
 
-      if _timing[@number] - music.currentTime < -0.3
-        @tl.fadeOut(300).then ()-> _group.removeChild(@)
+    if _timing[@number] - music.currentTime < -0.3
+      @tl.fadeOut(300).then ()-> _group.removeChild(@)
 
     if @clear and not @hasClearAnimationStarted
       @tl.clear()
