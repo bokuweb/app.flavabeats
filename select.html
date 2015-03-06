@@ -2,7 +2,7 @@
     <div class="container">
         <div ng-controller="SelectCtrl">
             <div class="row">
-                <div class="col-md-4"><h1 id="logo"><img src="img/logo.png" alt="無料音ゲー flavabeats"></h1></div>
+                <div class="col-md-4"><h1 id="logo"><img src="img/logo.png" alt="無料音ゲー flavabeats"></h1></div>
             </div>
             <div class="row search">
                 <div class="col-md-3">
@@ -11,7 +11,7 @@
                 <div class="col-md-2 sort"><span ng-click="changeSort()"><i class="fa fa-sort"></i>Level Sort</span></div>
             </div>
             <div class="row">
-                <div class="col-md-3 item" ng-repeat="m in music | filter:search | orderBy:'level':desc">
+                <div class="col-md-4 item" ng-repeat="m in music | filter:search | orderBy:'level':desc">
                     <a ng-href="#/game/{{m.id}}">
                         <img ng-src="{{m.img}}" class="music-image">
                         <div class="music-description">

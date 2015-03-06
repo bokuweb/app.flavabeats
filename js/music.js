@@ -4,7 +4,7 @@
     {
       id: 0,
       title: 'ouroboros',
-      level: 3,
+      level: 1,
       by: "2Melo",
       license: "Licensed under Creative Commons By Attribution-NonCommercial 3.0",
       img: "music/ouroboros.jpg",
