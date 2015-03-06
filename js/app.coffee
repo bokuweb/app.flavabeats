@@ -1,6 +1,7 @@
 flavaApp = angular.module('flavaApp', ['ngRoute','ngAnimate', 'ngSanitize'])
 
 _gameId = 0
+_game = null
 
 flavaApp.config ($routeProvider)->
   $routeProvider
@@ -21,7 +22,6 @@ flavaApp.controller 'SplashCtrl', ($scope)->
 flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
   $scope.end = off
   $scope.loaded = off
-
   _loadCallback = ->
     console.log "load complete"
     $scope.$apply ()->
@@ -43,11 +43,10 @@ flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
       if $scope.rank is "D" then $scope.result = "Failed" else
         if $scope.score >= 100000 then $scope.result = "Perfect!!" else $scope.result = "Clear!" 
         $scope.tweet = "http://twitter.com/?status="+g_music[_gameId].title+" "+$scope.result+" score "+$scope.score+" rank "+$scope.rank
-    _game = null
 
   _gameId = $routeParams.id
-  _game = new Game(_loadCallback, _endCallback)
-  _game.play(g_music[$routeParams.id])
+  unless _game? then _game = new Game()
+  _game.start(g_music[$routeParams.id], _loadCallback, _endCallback)
 
 flavaApp.controller 'SelectCtrl', ($scope)->
   $scope.desc = off

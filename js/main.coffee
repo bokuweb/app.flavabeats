@@ -9,16 +9,17 @@ class @Game
   _loadCallback = null
   _endCallback = null
   
-  constructor : (loadCallback, endCallback)->
-    _loadCallback = loadCallback
-    _endCallback = endCallback    
+  constructor : ()->
     enchant()
+
+  start : (music, loadCallback, endCallback)->
+    _loadCallback = loadCallback
+    _endCallback = endCallback
     _game = new Core 980, 600
     _game.fps = 60
     _game.preload g_resouces...
-
-  play : (music)->
     _game.preload music.src, music.img
+    
     _game.start()
     _game.onload = ->
       _endTime = music.endTime

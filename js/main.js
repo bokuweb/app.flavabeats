@@ -22,16 +22,16 @@
 
     _endCallback = null;
 
-    function Game(loadCallback, endCallback) {
+    function Game() {
+      enchant();
+    }
+
+    Game.prototype.start = function(music, loadCallback, endCallback) {
       _loadCallback = loadCallback;
       _endCallback = endCallback;
-      enchant();
       _game = new Core(980, 600);
       _game.fps = 60;
       _game.preload.apply(_game, g_resouces);
-    }
-
-    Game.prototype.play = function(music) {
       _game.preload(music.src, music.img);
       _game.start();
       return _game.onload = function() {
