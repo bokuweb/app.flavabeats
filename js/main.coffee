@@ -9,6 +9,9 @@ class @Game
   _loadCallback = null
   _endCallback = null
   _startCallback = null
+  _log =
+    key : []
+    timing : []
 
   constructor : -> enchant()
 
@@ -123,7 +126,10 @@ class Note
       when 88 then code = 2 # X
       when 68 then code = 3 # D
       when 67 then code = 4 # C
-      else
+      else code = null
+    if 0 <= code <= 4
+      _log.key.push code
+      _log.timing.push _game.music.currentTime
     for value in _group.childNodes
       if value.key is code
         if -1 < value.timing - _game.music.currentTime < 1
