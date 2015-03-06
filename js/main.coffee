@@ -59,9 +59,9 @@ class @Game
     if music.currentTime >= _endTime or music.duration <= music.currentTime
       if music.volume - 0.1 < 0 then music.volume = 0 else music.volume -= 0.1
       if music.volume <= 0
-        music.stop()
         music.volume = 1
         music.currentTime = 0
+        music.stop()
         _status = "stop"
         _endCallback(_score.val)
 
