@@ -127,10 +127,10 @@ class Note
   seek : (keyCode)->
     switch keyCode
       when 90 then code = 0 # Z
-      when 83 then code = 1 # S
-      when 88 then code = 2 # X
-      when 68 then code = 3 # D
-      when 67 then code = 4 # C
+      when 88 then code = 1 # X
+      when 67 then code = 2 # C
+      when 86 then code = 3 # V
+      when 66 then code = 4 # B
       else code = null
 
     for value in _group.childNodes

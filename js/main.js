@@ -196,16 +196,16 @@
         case 90:
           code = 0;
           break;
-        case 83:
+        case 88:
           code = 1;
           break;
-        case 88:
+        case 67:
           code = 2;
           break;
-        case 68:
+        case 86:
           code = 3;
           break;
-        case 67:
+        case 66:
           code = 4;
           break;
         default:
