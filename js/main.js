@@ -123,9 +123,9 @@
 
     NOTE_MARGIN_RIGHT = 20;
 
-    NOTE_OFFSET_X = 480;
+    NOTE_OFFSET_X = 280;
 
-    JUDGE_LABEL_X = 480;
+    JUDGE_LABEL_X = 500;
 
     JUDGE_LABEL_Y = 480;
 
@@ -294,7 +294,7 @@
       judgeLabel = new Label(judge);
       judgeLabel.x = JUDGE_LABEL_X;
       judgeLabel.y = JUDGE_LABEL_Y;
-      judgeLabel.font = "24px";
+      judgeLabel.font = "36px Arial";
       _game.rootScene.addChild(judgeLabel);
       judgeLabel.tl.setTimeBased();
       judgeLabel.tl.fadeOut(300).and().moveY(400, 300).then(function() {

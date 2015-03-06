@@ -69,15 +69,15 @@
           $scope.rank = "D";
         }
         if ($scope.rank === "D") {
-          return $scope.result = "Failed";
+          $scope.result = "Failed";
         } else {
           if ($scope.score >= 100000) {
             $scope.result = "Perfect!!";
           } else {
             $scope.result = "Clear!";
           }
-          return $scope.tweet = "http://twitter.com/?status=" + g_music[_gameId].title + " " + $scope.result + " score " + $scope.score + " rank " + $scope.rank;
         }
+        return $scope.tweet = "http://twitter.com/?status=" + g_music[_gameId].title + " " + $scope.result + " score " + $scope.score + " rank " + $scope.rank + "&hasgtags=#flavabeats";
       });
     };
     _gameId = $routeParams.id;

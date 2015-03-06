@@ -9,7 +9,7 @@ class @Game
   _loadCallback = null
   _endCallback = null
   _startCallback = null
-  
+
   constructor : -> enchant()
 
   start : (music, loadCallback, startCallback, endCallback)->
@@ -80,9 +80,9 @@ class @Game
 
 class Note
   NOTE_MARGIN_RIGHT = 20
-  NOTE_OFFSET_X = 480
-  JUDGE_LABEL_X = 480 
-  JUDGE_LABEL_Y = 480   
+  NOTE_OFFSET_X = 280
+  JUDGE_LABEL_X = 500
+  JUDGE_LABEL_Y = 480
   _game = null
   _pool = []
   _fallDist = 550
@@ -194,7 +194,7 @@ class Note
     judgeLabel = new Label(judge)
     judgeLabel.x = JUDGE_LABEL_X
     judgeLabel.y = JUDGE_LABEL_Y
-    judgeLabel.font = "24px"
+    judgeLabel.font = "36px Arial"
     _game.rootScene.addChild(judgeLabel)
     judgeLabel.tl.setTimeBased()
     judgeLabel.tl.fadeOut(300).and().moveY(400, 300).then ()-> _game.rootScene.removeChild(judgeLabel)
