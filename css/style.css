@@ -150,8 +150,9 @@ h1#game-scene-logo {
     position:absolute;
     top:10px;
     left:100%;
-    margin:0 0 0 -30px;
+    margin:0 0 0 -50px;
     color:#222;
+    font-size:32px;
 }
 /* ==========================================================================
 result
