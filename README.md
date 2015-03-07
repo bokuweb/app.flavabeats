@@ -7,6 +7,12 @@ Browser music game.
 
 App -> http://prototype.flavabeats.net/
 
+## Using
+
+* CoffeeScript v1.8.0
+* enchant.js v0.8.2
+* AngularJS v1.3.14
+
 ## Start
 
 ```node server.js```
