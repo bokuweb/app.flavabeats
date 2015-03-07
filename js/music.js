@@ -29,6 +29,20 @@
         key: [0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1],
         speed: 500
       }
+    }, {
+      id: 1,
+      title: 'For Us',
+      level: 4,
+      by: "ThisNameIsAFail ",
+      license: "Licensed under Creative Commons By Attribution 3.0 Unported",
+      img: "music/ForUs.jpg",
+      src: "music/ForUs.mp3",
+      endTime: 330,
+      note: {
+        timing: [],
+        key: [0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1],
+        speed: 500
+      }
     }
   ];
 
