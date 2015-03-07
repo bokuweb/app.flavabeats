@@ -48,8 +48,12 @@ div.top-copylight {
 
 }
 
+span.mobile-message {
+    font-size:70%;
+}
+
 .sp-logo {
-    width:100px;
+    width:120px;
     height:auto;
 }
 

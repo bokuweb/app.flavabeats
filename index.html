@@ -22,7 +22,7 @@
     </head>
     <body>
         <div ng-view id="view"></div>
-        <div id="footer-ad">
+        <div id="footer-ad" ng-controller="SplashCtrl" ng-hide="isMobile">
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- flava_proto -->
             <ins class="adsbygoogle"
