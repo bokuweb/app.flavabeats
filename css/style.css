@@ -175,13 +175,11 @@ result
 #overlay {
     width:100%;
     height:100%;
-    background:#222;
-    opacity:0.95;
     position:absolute;
     z-index:900;
     top:0;
     left:0;
-    color:#222;
+    color:#111;
 }
 
 #overlay-inner {
@@ -204,6 +202,7 @@ p.rank, p.result, p.score {
     line-height:114px;
     margin:0;
     padding:0;
+    color:#111;
 }
 
  p.score {
@@ -223,11 +222,11 @@ a.to-main-menu {
 
 a.to-twitter {
     background:#3498DB;
-    padding:15px 30px;
+    padding:15px 50px;
     color:#fff;
     border-radius:2px;
     font-family:"Arial";
-    margin: 40px 0 0 0;
+    margin: 40px 0 0 10px;
     -webkit-transition: all .3s;
     transition: all .3s;
 }
