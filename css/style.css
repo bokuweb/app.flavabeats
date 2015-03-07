@@ -171,7 +171,7 @@ result
     z-index:900;
     top:0;
     left:0;
-    color:#fff;
+    color:#222;
 }
 
 #overlay-inner {
@@ -202,7 +202,7 @@ p.rank, p.result, p.score {
 
 a.to-main-menu {
     background:#E74C3C;
-    padding:15px 30px;
+    padding:15px 50px;
     color:#fff;
     border-radius:2px;
     font-family:"Arial";
