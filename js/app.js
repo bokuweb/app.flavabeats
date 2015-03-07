@@ -81,7 +81,7 @@
             $scope.result = "Clear!";
           }
         }
-        $scope.tweet = "http://twitter.com/?status=" + g_music[_gameId].title + " " + $scope.result + " score " + $scope.score + " rank " + $scope.rank + "&hasgtags=#flavabeats";
+        $scope.tweet = "http://twitter.com/?status=" + g_music[_gameId].title + " " + $scope.result + " score " + $scope.score + " rank " + $scope.rank + " http://prototype.flavabeats.net/";
         if ((storage.getItem(_gameId) != null) || storage.getItem(_gameId) < score) {
           return storage.setItem(_gameId, score);
         }

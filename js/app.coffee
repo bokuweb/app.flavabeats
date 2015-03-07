@@ -52,7 +52,7 @@ flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
 
       if $scope.rank is "D" then $scope.result = "Failed" else
         if $scope.score >= 100000 then $scope.result = "Perfect!!" else $scope.result = "Clear!" 
-      $scope.tweet = "http://twitter.com/?status="+g_music[_gameId].title+" "+$scope.result+" score "+$scope.score+" rank "+$scope.rank+"&hasgtags=#flavabeats"
+      $scope.tweet = "http://twitter.com/?status="+g_music[_gameId].title+" "+$scope.result+" score "+$scope.score+" rank "+$scope.rank+" http://prototype.flavabeats.net/"
 
       if storage.getItem(_gameId)? or storage.getItem(_gameId) < score
         storage.setItem _gameId, score
