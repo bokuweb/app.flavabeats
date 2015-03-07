@@ -10,7 +10,7 @@ flavaApp.config ($routeProvider)->
   .when '/select',
     templateUrl: 'select.html'
   .when '/help',
-    templateUrl: 'help.html'    
+    templateUrl: 'help.html'
   .when '/game/:id',
     controller: 'GameCtrl'
     templateUrl: 'game.html'
@@ -20,6 +20,7 @@ flavaApp.config ($routeProvider)->
 flavaApp.controller 'SplashCtrl', ($scope)->
   agent = navigator.userAgent
   if agent.search(/(iPhone|iPod|Android|Mobile)/) isnt -1 then $scope.isMobile = on else $scope.isMobile = off
+
 
 flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
   $scope.end = off

@@ -7,6 +7,7 @@ body {
     background: url(../img/shattered.png);
     text-shadow: -1px 1px 0 rgba(255,255,255,0.8);
     color:#222;
+    overflow-x:hidden;
 }
 
 #main {
