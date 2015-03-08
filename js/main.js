@@ -267,7 +267,7 @@
       note.tl.clear();
       note.tl.setTimeBased();
       note.tl.scaleTo(1, 1, 0);
-      note.tl.moveY(note.destinationY, (note.timing - _game.music.currentTime) * 1000);
+      note.tl.moveY(note.destinationY, (note.timing - _game.music.currentTime - 0.02) * 1000);
       note.hasClearAnimationStarted = false;
       _group.addChild(note);
       return note.addEventListener("enterframe", _schedule);
