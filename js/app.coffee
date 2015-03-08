@@ -57,8 +57,9 @@ flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
 
       if storage.getItem(_gameId)? or storage.getItem(_gameId) < score then storage.setItem _gameId, score
 
+      console.log log
       for v in log.key then $scope.key += v + ","
-      for v in log.timing then $scope.key += v + ","
+      for v in log.timing then $scope.timing += v + ","
 
   _gameId = $routeParams.id
   unless _game? then _game = new Game()

@@ -86,6 +86,7 @@
         if ((storage.getItem(_gameId) != null) || storage.getItem(_gameId) < score) {
           storage.setItem(_gameId, score);
         }
+        console.log(log);
         _ref = log.key;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           v = _ref[_i];
@@ -95,7 +96,7 @@
         _results = [];
         for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
           v = _ref1[_j];
-          _results.push($scope.key += v + ",");
+          _results.push($scope.timing += v + ",");
         }
         return _results;
       });
