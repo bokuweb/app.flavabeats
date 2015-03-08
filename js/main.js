@@ -100,7 +100,7 @@
           _status = "stop";
           console.log(_log.key);
           console.log(_log.timing);
-          return _endCallback(Math.ceil(_score.val, _log));
+          return _endCallback(Math.ceil(_score.val), _log);
         }
       }
     };

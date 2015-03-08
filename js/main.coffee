@@ -68,7 +68,7 @@ class @Game
         _status = "stop"
         console.log _log.key
         console.log _log.timing
-        _endCallback Math.ceil _score.val, _log
+        _endCallback(Math.ceil(_score.val), _log)
 
   # keydown event detected
   document.addEventListener "keydown", (e)->
