@@ -286,6 +286,7 @@
         });
       }
       if (this.clear && !this.hasClearAnimationStarted) {
+        this.tl.clear();
         this.tl.scaleTo(1.5, 1.5, 200).and().fadeOut(200).then(function() {
           return _group.removeChild(this);
         });
