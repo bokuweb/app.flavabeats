@@ -190,7 +190,8 @@ class Note
       @tl.fadeOut(300).then ()-> _group.removeChild(@)
 
     if @clear and not @hasClearAnimationStarted
-      @tl.clear()
+      #@tl.clear()
+      # 
       @tl.scaleTo(1.5, 1.5, 200).and().fadeOut(200).then ()-> _group.removeChild(@)
       diffTime = _timing[@number] - @clearTime
       judgement = _judge(diffTime)

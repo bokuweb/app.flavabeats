@@ -88,10 +88,10 @@
       var music;
       music = _game.music;
       if (music.currentTime >= _endTime || music.duration <= music.currentTime) {
-        if (music.volume - 0.01 < 0) {
+        if (music.volume - 0.001 < 0) {
           music.volume = 0;
         } else {
-          music.volume -= 0.01;
+          music.volume -= 0.001;
         }
         if (music.volume <= 0) {
           music.volume = 1;
@@ -286,7 +286,6 @@
         });
       }
       if (this.clear && !this.hasClearAnimationStarted) {
-        this.tl.clear();
         this.tl.scaleTo(1.5, 1.5, 200).and().fadeOut(200).then(function() {
           return _group.removeChild(this);
         });
