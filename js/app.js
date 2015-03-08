@@ -50,7 +50,7 @@
         return $scope.start = false;
       });
     };
-    _endCallback = function(score) {
+    _endCallback = function(score, log) {
       var storage;
       storage = localStorage;
       console.log("end!!! " + score);
@@ -83,8 +83,10 @@
         }
         $scope.tweet = "http://twitter.com/?status=" + g_music[_gameId].title + " " + $scope.result + " score " + $scope.score + " rank " + $scope.rank + " http://prototype.flavabeats.net/";
         if ((storage.getItem(_gameId) != null) || storage.getItem(_gameId) < score) {
-          return storage.setItem(_gameId, score);
+          storage.setItem(_gameId, score);
         }
+        $scope.key = log.key;
+        return $scope.timing = log.timing;
       });
     };
     _gameId = $routeParams.id;

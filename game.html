@@ -1,6 +1,6 @@
 <div ng-controller="GameInfoCtrl">    
     <div id="main" ng-hide="end">
-        <h1 id="game-scene-logo"><img src="img/logo.png" alt="無料音ゲー flavabeats"></h1>
+        <h1 id="game-scene-logo"><img src="img/logo.png" alt="無料音ゲー flavabeats"></h1>
         <div class="spinner" ng-hide="loaded">
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
@@ -26,6 +26,8 @@
                 <p class="score">{{score}}</p>
                 <a ng-href="#/select" class="to-main-menu"><i class="fa fa-th-large"></i>Menu</a>
                 <a href="{{tweet}}" class="to-twitter" target="_blank"><i class="fa fa-twitter"></i>Tweet</a>
+                <span id="key-log">{{key}}</span>
+                <span id="timing-log">{{timing}}</span>
             </div>
         </div>
     </div>

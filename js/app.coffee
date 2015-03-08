@@ -37,7 +37,7 @@ flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
     $scope.$apply ()->
       $scope.start = off
 
-  _endCallback = (score)->
+  _endCallback = (score, log)->
     storage = localStorage
     console.log "end!!! " + score
     $scope.$apply ()->
@@ -55,8 +55,10 @@ flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
         if $scope.score >= 100000 then $scope.result = "Perfect!!" else $scope.result = "Clear!" 
       $scope.tweet = "http://twitter.com/?status="+g_music[_gameId].title+" "+$scope.result+" score "+$scope.score+" rank "+$scope.rank+" http://prototype.flavabeats.net/"
 
-      if storage.getItem(_gameId)? or storage.getItem(_gameId) < score
-        storage.setItem _gameId, score
+      if storage.getItem(_gameId)? or storage.getItem(_gameId) < score then storage.setItem _gameId, score
+
+      $scope.key = log.key
+      $scope.timing = log.timing
 
   _gameId = $routeParams.id
   unless _game? then _game = new Game()
