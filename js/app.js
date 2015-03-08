@@ -55,6 +55,7 @@
       storage = localStorage;
       console.log("end!!! " + score);
       return $scope.$apply(function() {
+        var v, _i, _j, _len, _len1, _ref, _ref1, _results;
         $scope.end = true;
         $scope.score = score;
         if (score > 97500) {
@@ -85,8 +86,18 @@
         if ((storage.getItem(_gameId) != null) || storage.getItem(_gameId) < score) {
           storage.setItem(_gameId, score);
         }
-        $scope.key = log.key;
-        return $scope.timing = log.timing;
+        _ref = log.key;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          v = _ref[_i];
+          $scope.key += v + ",";
+        }
+        _ref1 = log.timing;
+        _results = [];
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          v = _ref1[_j];
+          _results.push($scope.key += v + ",");
+        }
+        return _results;
       });
     };
     _gameId = $routeParams.id;
