@@ -60,7 +60,7 @@ class @Game
   _endGameIfTimeOver = ->
     music = _game.music
     if music.currentTime >= _endTime or music.duration <= music.currentTime
-      if music.volume - 0.001 < 0 then music.volume = 0 else music.volume -= 0.001
+      if music.volume - 0.005 < 0 then music.volume = 0 else music.volume -= 0.005
       if music.volume <= 0
         music.volume = 1
         music.currentTime = 0
