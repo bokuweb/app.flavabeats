@@ -103,8 +103,8 @@ class Note
   _speed = 0
   _cb = null
   _threshold =
-    great : 0.1
-    good : 0.2
+    great : 0.15
+    good : 0.3
     
 
   constructor : (game, params, cb)->
