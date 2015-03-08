@@ -223,6 +223,7 @@ a.to-main-menu {
     margin: 40px 0 0 0;
     -webkit-transition: all .3s;
     transition: all .3s;
+    font-size:20px;
 }
 
 a.to-twitter {
@@ -234,6 +235,7 @@ a.to-twitter {
     margin: 40px 0 0 10px;
     -webkit-transition: all .3s;
     transition: all .3s;
+    font-size:20px;
 }
 
 a.to-main-menu:hover,
