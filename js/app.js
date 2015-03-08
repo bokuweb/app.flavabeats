@@ -86,7 +86,8 @@
         if ((storage.getItem(_gameId) != null) || storage.getItem(_gameId) < score) {
           storage.setItem(_gameId, score);
         }
-        console.log(log);
+        $scope.key = "";
+        $scope.timing = "";
         _ref = log.key;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           v = _ref[_i];

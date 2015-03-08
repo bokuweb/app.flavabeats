@@ -56,8 +56,8 @@ flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
       $scope.tweet = "http://twitter.com/?status="+g_music[_gameId].title+" "+$scope.result+" score "+$scope.score+" rank "+$scope.rank+" http://prototype.flavabeats.net/"
 
       if storage.getItem(_gameId)? or storage.getItem(_gameId) < score then storage.setItem _gameId, score
-
-      console.log log
+      $scope.key = ""
+      $scope.timing = ""
       for v in log.key then $scope.key += v + ","
       for v in log.timing then $scope.timing += v + ","
 
