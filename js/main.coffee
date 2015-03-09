@@ -55,6 +55,7 @@ class @Game
   _judgeEndCallback = (judge)->
     if judge is "Great" then _score.val += 100000 / _note.getNum()
     else if judge is "Good" then _score.val += 70000 / _note.getNum()
+    if _score.val > 100000 then _score.val = 100000
     _score.board.update Math.ceil(_score.val)
 
   _endGameIfTimeOver = ->

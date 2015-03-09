@@ -81,6 +81,9 @@
       } else if (judge === "Good") {
         _score.val += 70000 / _note.getNum();
       }
+      if (_score.val > 100000) {
+        _score.val = 100000;
+      }
       return _score.board.update(Math.ceil(_score.val));
     };
 
