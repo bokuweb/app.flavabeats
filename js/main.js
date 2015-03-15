@@ -289,7 +289,7 @@
         this.rotate((music.currentTime - this.oldtime) * 500);
       }
       this.oldtime = music.currentTime;
-      if (_timing[this.number] - music.currentTime < -0.3) {
+      if (_timing[this.number] - music.currentTime < -0.3 && !this.clear) {
         this.tl.clear();
         this.tl.fadeOut(300).then(function() {
           return _group.removeChild(this);
