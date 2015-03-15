@@ -9,6 +9,7 @@ class @Game
   _loadCallback = null
   _endCallback = null
   _startCallback = null
+  _hasLoaded = false
   _log =
     key : []
     timing : []
@@ -46,6 +47,7 @@ class @Game
           _note.create()
           _endGameIfTimeOver()
       _loadCallback()
+      _hasLoaded = true
 
   _mainLoop = ->
     if _status is "playing"
@@ -75,12 +77,13 @@ class @Game
   document.addEventListener "keydown", (e)->
     music = _game.music
     if _status is "stop"
-      if e.keyCode is 13
-        _startCallback()
-        _status = "playing"
-        setTimeout ()->
-          music.play()
-        , 1000
+      if _hasLoaded 
+        if e.keyCode is 13
+          _startCallback()
+          _status = "playing"
+          setTimeout ()->
+            music.play()
+          , 1000
     else if _status = "playing" then code = _note.seek(e.keyCode)
     if 0 <= code <= 4
       _log.key.push code
@@ -183,6 +186,7 @@ class Note
 
   _schedule = ->
     music = _game.music
+    @tl.moveY(@destinationY, (@timing - _game.music.currentTime - 0.02)*1000)
     if @oldtime?
       @rotate((music.currentTime - @oldtime) * 500)
     @oldtime = music.currentTime

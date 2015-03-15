@@ -3,7 +3,7 @@
   var GameSys, Note, Score;
 
   this.Game = (function() {
-    var _endCallback, _endGameIfTimeOver, _endTime, _game, _judgeEndCallback, _loadCallback, _log, _mainLoop, _note, _score, _startCallback, _status;
+    var _endCallback, _endGameIfTimeOver, _endTime, _game, _hasLoaded, _judgeEndCallback, _loadCallback, _log, _mainLoop, _note, _score, _startCallback, _status;
 
     _endTime = 90;
 
@@ -23,6 +23,8 @@
     _endCallback = null;
 
     _startCallback = null;
+
+    _hasLoaded = false;
 
     _log = {
       key: [],
@@ -64,7 +66,8 @@
             return _endGameIfTimeOver();
           }
         });
-        return _loadCallback();
+        _loadCallback();
+        return _hasLoaded = true;
       };
     };
 
@@ -112,12 +115,14 @@
       var code, music;
       music = _game.music;
       if (_status === "stop") {
-        if (e.keyCode === 13) {
-          _startCallback();
-          _status = "playing";
-          setTimeout(function() {
-            return music.play();
-          }, 1000);
+        if (_hasLoaded) {
+          if (e.keyCode === 13) {
+            _startCallback();
+            _status = "playing";
+            setTimeout(function() {
+              return music.play();
+            }, 1000);
+          }
         }
       } else if (_status = "playing") {
         code = _note.seek(e.keyCode);
@@ -279,6 +284,7 @@
     _schedule = function() {
       var diffTime, judgement, music;
       music = _game.music;
+      this.tl.moveY(this.destinationY, (this.timing - _game.music.currentTime - 0.02) * 1000);
       if (this.oldtime != null) {
         this.rotate((music.currentTime - this.oldtime) * 500);
       }
