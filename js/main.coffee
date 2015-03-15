@@ -186,13 +186,13 @@ class Note
 
   _schedule = ->
     music = _game.music
-    @tl.moveY(@destinationY, (@timing - _game.music.currentTime - 0.02)*1000)
+    #@tl.moveY(@destinationY, (@timing - _game.music.currentTime - 0.02)*1000)
     if @oldtime?
       @rotate((music.currentTime - @oldtime) * 500)
     @oldtime = music.currentTime
 
     if _timing[@number] - music.currentTime < -0.3
-      @tl.clear()
+      #@tl.clear()
       @tl.fadeOut(300).then ()-> _group.removeChild(@)
 
     if @clear and not @hasClearAnimationStarted
