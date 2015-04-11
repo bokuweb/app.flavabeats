@@ -321,10 +321,10 @@
       judgeLabel = new Label(judge);
       judgeLabel.x = JUDGE_LABEL_X;
       judgeLabel.y = JUDGE_LABEL_Y;
-      judgeLabel.font = "32px Arial";
+      judgeLabel.font = "bold 32px 'Quicksand'";
       _game.rootScene.addChild(judgeLabel);
       judgeLabel.tl.setTimeBased();
-      judgeLabel.tl.fadeOut(300).and().moveY(240, 400).then(function() {
+      judgeLabel.tl.fadeOut(500).and().moveY(240, 500).then(function() {
         return _game.rootScene.removeChild(judgeLabel);
       });
       return _cb(judge);
