@@ -109,7 +109,6 @@ class Note
   _threshold =
     great : 0.15
     good : 0.3
-    
 
   constructor : (game, params, cb)->
     _game = game
@@ -147,7 +146,7 @@ class Note
     return code
 
   getNum : -> _timing.length
-    
+
   _renderDist = ->
     for i in [0...5]
       noteDist = new Sprite(_width, _height)
@@ -176,17 +175,18 @@ class Note
     note.timing = _timing[number]
     note.clear  = false
     note.opacity = 1
+    note.scale = 1
     note.tl.clear()
     note.tl.setTimeBased()
     note.tl.scaleTo(1, 1, 0)
-    note.tl.moveY(note.destinationY, (note.timing - _game.music.currentTime - 0.02)*1000)
     note.hasClearAnimationStarted = false
     _group.addChild(note)
     note.addEventListener "enterframe", _schedule
 
   _schedule = ->
     music = _game.music
-    @tl.moveY(@destinationY, (@timing - _game.music.currentTime - 0.02)*1000)
+    @y = @destinationY - ((@timing - music.currentTime)*_speed)
+    @y = @destinationY if @y > @destinationY
     if @oldtime?
       @rotate((music.currentTime - @oldtime) * 500)
     @oldtime = music.currentTime

@@ -272,10 +272,10 @@
       note.timing = _timing[number];
       note.clear = false;
       note.opacity = 1;
+      note.scale = 1;
       note.tl.clear();
       note.tl.setTimeBased();
       note.tl.scaleTo(1, 1, 0);
-      note.tl.moveY(note.destinationY, (note.timing - _game.music.currentTime - 0.02) * 1000);
       note.hasClearAnimationStarted = false;
       _group.addChild(note);
       return note.addEventListener("enterframe", _schedule);
@@ -284,7 +284,10 @@
     _schedule = function() {
       var diffTime, judgement, music;
       music = _game.music;
-      this.tl.moveY(this.destinationY, (this.timing - _game.music.currentTime - 0.02) * 1000);
+      this.y = this.destinationY - ((this.timing - music.currentTime) * _speed);
+      if (this.y > this.destinationY) {
+        this.y = this.destinationY;
+      }
       if (this.oldtime != null) {
         this.rotate((music.currentTime - this.oldtime) * 500);
       }
