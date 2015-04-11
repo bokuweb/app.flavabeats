@@ -5,13 +5,13 @@ Browser music game.
 
 ## App Page
 
-App -> http://prototype.flavabeats.net/
+App -> http://app.flavabeats.net/
 
 ## Using
 
 * CoffeeScript v1.8.0
 * enchant.js v0.8.2
-* AngularJS v1.3.14
+* AngularJS v1.3.14
 
 ## Start
 
