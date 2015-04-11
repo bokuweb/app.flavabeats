@@ -8,6 +8,7 @@ body {
     text-shadow: -1px 1px 0 rgba(255,255,255,0.8);
     color:#222;
     overflow-x:hidden;
+    font-family: 'Quicksand', sans-serif;
 }
 
 #main {
@@ -116,7 +117,7 @@ div.music-description {
     position:absolute;
     top:0;
     left:160px;
-    font-family: sans-serif;
+    font-weight:bold;
 }
 
 div.copyright {
@@ -172,7 +173,7 @@ h1#game-scene-logo {
 
 #footer-ad{
     width:728px;
-    margin:70px auto 50px auto;
+    margin:30px auto 50px auto;
 }
 /* ==========================================================================
 result
@@ -202,7 +203,6 @@ div.stats {
 p.rank, p.result, p.score {
     text-shadow:none;
     font-size:108px;
-    font-family:"Arial";
     font-weight:bold;
     line-height:114px;
     margin:0;
@@ -219,7 +219,6 @@ a.to-main-menu {
     padding:15px 50px;
     color:#fff;
     border-radius:2px;
-    font-family:"Arial";
     margin: 40px 0 0 0;
     -webkit-transition: all .3s;
     transition: all .3s;
@@ -231,7 +230,6 @@ a.to-twitter {
     padding:15px 50px;
     color:#fff;
     border-radius:2px;
-    font-family:"Arial";
     margin: 40px 0 0 10px;
     -webkit-transition: all .3s;
     transition: all .3s;
