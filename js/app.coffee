@@ -59,7 +59,11 @@ flavaApp.controller 'GameCtrl', ($scope, $routeParams)->
       $scope.key = ""
       $scope.timing = ""
       for v in log.key then $scope.key += v + ","
-      for v in log.timing then $scope.timing += v + ","
+      for v, i in log.timing
+        if i > 0
+          diff = v - log.timing[i-1]
+          v = log.timing[i-1] if diff < 100
+        $scope.timing += v + ","
 
   _gameId = $routeParams.id
   unless _game? then _game = new Game()

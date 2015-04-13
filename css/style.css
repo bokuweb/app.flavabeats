@@ -92,6 +92,22 @@ h1#logo {
     margin-bottom:50px;
 }
 
+.mode {
+    background: #ccc;
+    padding: 2px 5px;
+    color:#eee;
+    text-decoration: none;
+    text-shadow :none;
+    margin: 3px 8px 3px 0;
+    border-radius: 3px;
+}
+.normal {
+    background:#2980B9;
+}
+.another {
+    background:#D35400;
+}
+
 .sort {
     padding-top:5px;
 }
@@ -116,8 +132,9 @@ div#info {
 div.music-description {
     position:absolute;
     top:0;
-    left:160px;
+    left:180px;
     font-weight:bold;
+    font-size:90%;
 }
 
 div.copyright {

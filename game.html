@@ -12,7 +12,7 @@
                 <span class="title"><i class="fa fa-headphones"></i>{{music.title}}</span><br>
                 <span class="author">{{music.by}}</span><br>
                 <span class="select-license">{{music.license}}</span><br>
-                <span class="level" ng-bind-html="music.levelIcon"></span><br>
+                <span class="mode {{music.mode}}">{{music.mode}}</span><span class="level" ng-bind-html="music.levelIcon"></span><br>
                 <span class="high-score"><i class="fa fa-trophy"></i>  your best {{music.highScore}}</span>
             </div>
         </div>

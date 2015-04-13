@@ -55,7 +55,7 @@
       storage = localStorage;
       console.log("end!!! " + score);
       return $scope.$apply(function() {
-        var v, _i, _j, _len, _len1, _ref, _ref1, _results;
+        var diff, i, v, _i, _j, _len, _len1, _ref, _ref1, _results;
         $scope.end = true;
         $scope.score = score;
         if (score > 97500) {
@@ -95,8 +95,14 @@
         }
         _ref1 = log.timing;
         _results = [];
-        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-          v = _ref1[_j];
+        for (i = _j = 0, _len1 = _ref1.length; _j < _len1; i = ++_j) {
+          v = _ref1[i];
+          if (i > 0) {
+            diff = v - log.timing[i - 1];
+            if (diff < 100) {
+              v = log.timing[i - 1];
+            }
+          }
           _results.push($scope.timing += v + ",");
         }
         return _results;
