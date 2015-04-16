@@ -193,7 +193,7 @@ class Note
 
     if _timing[@number] - music.currentTime < -0.3 and not @clear
       @tl.clear()
-      @tl.fadeOut(300).then ()-> _group.removeChild(@)
+      @tl.fadeOut(100).then ()-> _group.removeChild(@)
 
     if @clear and not @hasClearAnimationStarted
       @tl.clear()

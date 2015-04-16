@@ -99,7 +99,7 @@
           v = _ref1[i];
           if (i > 0) {
             diff = v - log.timing[i - 1];
-            if (diff < 100) {
+            if (diff < 0.1) {
               v = log.timing[i - 1];
             }
           }

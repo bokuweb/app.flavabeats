@@ -294,7 +294,7 @@
       this.oldtime = music.currentTime;
       if (_timing[this.number] - music.currentTime < -0.3 && !this.clear) {
         this.tl.clear();
-        this.tl.fadeOut(300).then(function() {
+        this.tl.fadeOut(100).then(function() {
           return _group.removeChild(this);
         });
       }
