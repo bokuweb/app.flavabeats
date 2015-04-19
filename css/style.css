@@ -54,6 +54,11 @@ div.top-copylight {
 
 }
 
+.sp-store {
+    width:120px;
+    height:auto;
+    margin:40px 0 0 0; 
+}
 span.mobile-message {
     font-size:70%;
 }
@@ -225,6 +230,14 @@ p.rank, p.result, p.score {
     margin:0;
     padding:0;
     color:#111;
+}
+
+#playstore {
+    width:100px;
+    height:auto;
+    position:absolute;
+    top:55px;
+    left:280px;
 }
 
  p.score {
